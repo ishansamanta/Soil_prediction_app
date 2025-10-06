@@ -1,39 +1,47 @@
 name: Python Soil Predictor CI
 
+# Trigger on push or pull request to main branch
 on:
   push:
     branches: [ main ]
   pull_request:
+    branches: [ main ]
 
 jobs:
   run-soil-predictor:
     runs-on: ubuntu-latest
 
     steps:
+    # 1️⃣ Checkout the repository
     - name: Checkout repository
       uses: actions/checkout@v3
 
+    # 2️⃣ Set up Python 3.11
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.11'
 
+    # 3️⃣ Install system libraries required by Kivy
     - name: Install system dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y \
-            libmtdev1 \
-            libsdl2-2.0-0 \
-            libsdl2-image-2.0-0 \
-            libsdl2-mixer-2.0-0 \
-            libsdl2-ttf-2.0-0
+        sudo apt-get install -y libmtdev1 \
+                                libsdl2-2.0-0 \
+                                libsdl2-image-2.0-0 \
+                                libsdl2-mixer-2.0-0 \
+                                libsdl2-ttf-2.0-0 \
+                                python3-dev \
+                                build-essential
 
+    # 4️⃣ Install Python dependencies
     - name: Install Python dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
+        pip install kivy pandas numpy scikit-learn
 
-    - name: Run soil predictor in headless mode
+    # 5️⃣ Run your Kivy app in headless mode
+    - name: Run soil predictor app headless
       run: python soil_predictor_app.py
       env:
         KIVY_WINDOW: mock
