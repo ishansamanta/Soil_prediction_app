@@ -1,3 +1,5 @@
+import os
+os.environ['KIVY_WINDOW'] = 'mock'
 import kivy
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
@@ -124,3 +126,4 @@ class SoilPredictorApp(App):
 
 if __name__ == '__main__':
     SoilPredictorApp().run()
+
