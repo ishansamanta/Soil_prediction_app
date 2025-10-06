@@ -24,6 +24,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt || pip install pandas numpy scikit-learn  # install basic deps
 
-    - name: Run Soil Predictor
-      run: |
-        soil_predictor_app.py  # replace with your Python filename
+    - name: Run soil predictor
+      run: python soil_predictor_app.py
+
