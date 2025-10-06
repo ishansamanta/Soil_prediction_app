@@ -1,0 +1,5 @@
+kivy
+pandas
+numpy
+scikit-learn
+# any other packages your soil predictor uses
