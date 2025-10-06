@@ -26,4 +26,4 @@ jobs:
 
     - name: Run Soil Predictor
       run: |
-        python your_file_name.py  # replace with your Python filename
+        soil_predictor_app.py  # replace with your Python filename
