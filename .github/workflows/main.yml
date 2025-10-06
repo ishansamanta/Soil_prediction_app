@@ -45,3 +45,8 @@ jobs:
       run: python soil_predictor_app.py
       env:
         KIVY_WINDOW: mock
+    - name: Install xvfb
+      run: sudo apt-get install -y xvfb
+    - name: Run app with virtual display
+      run: xvfb-run python soil_predictor_app.py
+
